@@ -1,0 +1,64 @@
+.wrapper {
+    width: 40%;
+    flex: 0 0 40%;
+    padding: 6px 12px;
+    margin-right: 24px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container {
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 12px;
+}
+
+.database-info {
+    margin-top: 6px;
+}
+
+.database-name-label {
+    display: block;
+    padding: 4px 12px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.database-name-inp {
+    width: 100%;
+}
+
+.btn-generate-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.btn-add-table {
+    width: 20%;
+    padding: 6px;
+    border-radius: 12px;
+    margin-top: 12px;
+    background-color: aqua;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.btn-generate {
+    padding: 12px;
+    width: 80%;
+    background-color: aqua;
+    border-radius: 12px;
+    margin-top: 24px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.btn-add-table:hover,
+.btn-generate:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
