@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sql-generator/static/css/main.51b8be92.css",
+    "main.js": "/sql-generator/static/js/main.e7d37fcb.js",
+    "static/js/787.aeb39de0.chunk.js": "/sql-generator/static/js/787.aeb39de0.chunk.js",
+    "index.html": "/sql-generator/index.html",
+    "main.51b8be92.css.map": "/sql-generator/static/css/main.51b8be92.css.map",
+    "main.e7d37fcb.js.map": "/sql-generator/static/js/main.e7d37fcb.js.map",
+    "787.aeb39de0.chunk.js.map": "/sql-generator/static/js/787.aeb39de0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.51b8be92.css",
+    "static/js/main.e7d37fcb.js"
+  ]
+}
