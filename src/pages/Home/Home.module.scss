@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-btn {
+    padding: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+    background-color: aqua;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}

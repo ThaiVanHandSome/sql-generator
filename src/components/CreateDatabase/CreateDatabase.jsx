@@ -1,35 +1,15 @@
 import { useState } from 'react';
-import { faker } from '@faker-js/faker';
 import classNames from 'classnames/bind';
 import styles from './CreateDatabase.module.scss';
 import styles_inp from '../InputHaveCheck/InputHaveCheck.module.scss';
 import Table from '../Table';
 import { TextInput } from '../InputHaveCheck';
+import dataType from '~/Data/dataType';
+import funcGenerate from '~/Data/funcGenerate';
 
 const cx = classNames.bind(styles);
 const cx_inp = classNames.bind(styles_inp);
-const dataType = {
-    id: 'varchar(50)',
-    firstName: 'varchar(50)',
-    lastName: 'varchar(50)',
-    fullName: 'varchar(50)',
-    sex: 'varchar(50)',
-    product: 'varchar(50)',
-    phone: 'varchar(50)',
-    int: 'int',
-    float: 'float',
-};
-const generateData = {
-    id: faker.string.nanoid,
-    firstName: faker.person.firstName,
-    lastName: faker.person.lastName,
-    fullName: faker.person.fullName,
-    sex: faker.person.sex,
-    product: faker.commerce.product,
-    phone: faker.phone.imei,
-    int: faker.number.int,
-    float: faker.datatype.float,
-};
+
 const initDatabase = {
     name: '',
     tables: [
@@ -101,7 +81,7 @@ function CreateDatabase({ setSqlStatement }) {
                 const propTypes = tables[i].props.type;
                 let vals = '';
                 for (let k = 0; k < propTypes.length; k++) {
-                    const val = generateData[propTypes[k]]();
+                    const val = funcGenerate[propTypes[k]]();
                     if (dataType[propTypes[k]] === 'varchar(50)') {
                         vals += `'${val}'`;
                     } else {

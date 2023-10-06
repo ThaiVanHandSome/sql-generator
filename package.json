@@ -2,7 +2,6 @@
     "name": "form",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://thaivanhandsome.github.io/sql-generator/",
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.5",
         "@testing-library/jest-dom": "^5.16.5",
@@ -26,7 +25,8 @@
     "devDependencies": {
         "@faker-js/faker": "^8.1.0",
         "babel-plugin-module-resolver": "^5.0.0",
-        "react-app-rewired": "^2.2.1"
+        "react-app-rewired": "^2.2.1",
+        "react-router-dom": "^6.16.0"
     },
     "scripts": {
         "predeploy": "npm run build",
