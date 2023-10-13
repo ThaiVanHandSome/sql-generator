@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { loginContext } from '~/context/loginContext';
@@ -16,22 +17,28 @@ function Home() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
-                <button
+                <Link className={cx('btn')} to={routes.generate}>
+                    Generate SQL Statement
+                </Link>
+                <Link className={cx('btn')} to={routes.exceltosql}>
+                    Convert Excel to SQL Statement
+                </Link>
+                {/* <button
                     className={cx('btn')}
                     onClick={() => {
                         window.location.href = routes.generate;
                     }}
                 >
                     Generate SQL Statement
-                </button>
-                <button
+                </button> */}
+                {/* <button
                     className={cx('btn')}
                     onClick={() => {
                         window.location.href = routes.exceltosql;
                     }}
                 >
                     Convert Excel to SQL Statement
-                </button>
+                </button> */}
                 <button className={cx('btn')}>Convert JSON to SQL Statement</button>
             </div>
             <div className={cx('label-sql')}>SQL</div>
