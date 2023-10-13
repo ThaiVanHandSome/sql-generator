@@ -4,7 +4,7 @@ import { publicRoutes } from './routes';
 function App() {
     return (
         <div className="app">
-            <BrowserRouter>
+            <BrowserRouter basename="/sql-generatorrr">
                 <Routes>
                     {publicRoutes.map((item, index) => {
                         const Comp = item.component;
