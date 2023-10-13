@@ -54,7 +54,8 @@ function FormSignUp({ setLoginSuccess, setOpenLogin }) {
 }
 
 FormSignUp.propTypes = {
-    setLogin: PropTypes.func.isRequired,
+    setLoginSuccess: PropTypes.func,
+    setOpenLogin: PropTypes.func,
 };
 
 export default FormSignUp;

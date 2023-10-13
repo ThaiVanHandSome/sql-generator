@@ -1,15 +1,20 @@
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Table.module.scss';
-import { TextInput } from '../InputHaveCheck';
+import { TextInput } from '~/components/InputHaveCheck';
+import ShowMenuOption from '../ShowMenuOption';
 
 const cx = classNames.bind(styles);
 
 function Table({ id, database, setDatabase, handleDeleteTable }) {
+    const [openChooseOption, setOpenChooseOption] = useState(false);
+    const [indexType, setIndexType] = useState(null);
     const handleAddProperty = () => {
         setDatabase((prev) => {
             const newData = { ...prev };
             newData.tables[id].props.name.push('');
-            newData.tables[id].props.type.push('');
+            newData.tables[id].props.type.push('firstName');
             return newData;
         });
     };
@@ -28,12 +33,38 @@ function Table({ id, database, setDatabase, handleDeleteTable }) {
             const newData = { ...prev };
             newData.tables[id].props.name.splice(index, 1);
             newData.tables[id].props.type.splice(index, 1);
+            const primaryKey = newData.tables[id].props.primaryKey;
+            if (index < primaryKey) {
+                newData.tables[id].props.primaryKey -= 1;
+            } else if (index === primaryKey) {
+                newData.tables[id].props.primaryKey = 0;
+            }
+            return newData;
+        });
+    };
+
+    const handleChooseType = (index) => {
+        setIndexType(index);
+        setOpenChooseOption(true);
+    };
+
+    const handleSetPrimaryKey = (index) => {
+        setDatabase((prev) => {
+            const newData = { ...prev };
+            newData.tables[id].props.primaryKey = index;
             return newData;
         });
     };
 
     return (
         <div className={cx('wrapper')}>
+            <ShowMenuOption
+                id={id}
+                indexType={indexType}
+                setDatabase={setDatabase}
+                open={openChooseOption}
+                setOpen={() => setOpenChooseOption(false)}
+            />
             <div className={cx('table-name-inp')}>
                 <TextInput
                     id={id}
@@ -47,6 +78,13 @@ function Table({ id, database, setDatabase, handleDeleteTable }) {
                 {database.tables[id].props.name.map((items, index) => {
                     return (
                         <div key={index} className={cx('property')}>
+                            <input
+                                type="radio"
+                                name=""
+                                className={cx('choose-primary-key')}
+                                checked={index === database.tables[id].props.primaryKey}
+                                onChange={() => handleSetPrimaryKey(index)}
+                            />
                             <div className={cx('property-inp')}>
                                 <TextInput
                                     id={id}
@@ -57,21 +95,14 @@ function Table({ id, database, setDatabase, handleDeleteTable }) {
                                     placeholder="Property name..."
                                 />
                             </div>
-                            <select
-                                className={cx('property-type')}
-                                value={database.tables[id].props.type[index]}
-                                onChange={(e) => handleChangeSelection(e, index)}
-                            >
-                                <option value="firstName">firstName</option>
-                                <option value="lastName">lastName</option>
-                                <option value="fullName">fullName</option>
-                                <option value="sex">sex</option>
-                                <option value="int">int</option>
-                                <option value="float">float</option>
-                                <option value="phone">phone</option>
-                                <option value="id">id</option>
-                                <option value="product">product</option>
-                            </select>
+                            <div className={cx('property-inp')}>
+                                <TextInput
+                                    isNotSelect={true}
+                                    className={cx('property-type')}
+                                    value={database.tables[id].props.type[index]}
+                                    onClick={() => handleChooseType(index)}
+                                />
+                            </div>
                             <div className={cx('btn-delete-prop')} onClick={() => handleDeleteProp(index)}>
                                 X
                             </div>
@@ -97,5 +128,12 @@ function Table({ id, database, setDatabase, handleDeleteTable }) {
         </div>
     );
 }
+
+Table.propTypes = {
+    id: PropTypes.number,
+    database: PropTypes.object,
+    setDatabase: PropTypes.func,
+    handleDeleteTable: PropTypes.func,
+};
 
 export default Table;

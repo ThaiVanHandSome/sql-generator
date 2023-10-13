@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 import styles from './Dialog.module.scss';
@@ -14,5 +15,10 @@ function Dialog({ setOpen, message }) {
         </>
     );
 }
+
+Dialog.propTypes = {
+    setOpen: PropTypes.func.isRequired,
+    message: PropTypes.string,
+};
 
 export default Dialog;

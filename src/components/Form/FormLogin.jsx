@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import { Form as FormBox, Formik } from 'formik';
 import * as Yup from 'yup';
 import { MyTextInp, MyPassword } from './FormItem';
-import Dialog from '../Dialog';
 import styles from './Form.module.scss';
 
 const cx = classNames.bind(styles);
@@ -43,7 +42,9 @@ function FormLogin({ setLoginSuccess, setOpenLogin, setOpenDialog }) {
 }
 
 FormLogin.propTypes = {
-    setLogin: PropTypes.func.isRequired,
+    setLoginSuccess: PropTypes.func,
+    setOpenLogin: PropTypes.func,
+    setOpenDialog: PropTypes.func,
 };
 
 export default FormLogin;

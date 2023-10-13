@@ -1,10 +1,23 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './InputHaveCheck.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TextInput = ({ id, indexProp, className, value, placeholder, setDatabase, type }) => {
+const TextInput = ({
+    id,
+    setData,
+    indexProp,
+    className,
+    value,
+    placeholder,
+    setDatabase,
+    type,
+    isNotSelect,
+    onClick,
+}) => {
     const classes = cx('text-input', {
+        'not-select': isNotSelect,
         [className]: className,
     });
 
@@ -34,6 +47,8 @@ const TextInput = ({ id, indexProp, className, value, placeholder, setDatabase, 
                 newData.tables[id].cnt = inpVal;
                 return newData;
             });
+        } else {
+            setData(inpVal);
         }
         inpVal.trim();
         if (!inpVal) {
@@ -50,6 +65,8 @@ const TextInput = ({ id, indexProp, className, value, placeholder, setDatabase, 
             value={value}
             onChange={(e) => handleChangeInput(e)}
             placeholder={placeholder}
+            onClick={onClick}
+            readOnly={isNotSelect}
         />
     );
 };

@@ -6,6 +6,10 @@
     border: 1px solid #ccc;
     border-radius: 12px;
     letter-spacing: 0.6px;
+
+    &.not-select {
+        cursor: pointer;
+    }
 }
 
 .error {

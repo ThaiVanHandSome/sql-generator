@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import CreateDatabase from '~/components/CreateDatabase';
-import ViewSQLStatement from '~/components/ViewSQLStatement';
+import CreateDatabase from './CreateDatabase';
+import ViewSQLStatement from './ViewSQLStatement';
 import classNames from 'classnames/bind';
 import styles from './Generate.module.scss';
 

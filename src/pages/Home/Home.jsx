@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { loginContext } from '~/context/loginContext';
+import routes from '~/configs/routes';
 
 const cx = classNames.bind(styles);
 
@@ -12,16 +13,30 @@ function Home() {
     //     window.location.href = '/auth';
     // }, [login]);
 
-    const handleGenerate = () => {
-        if (!login) {
-            window.location.href = '/auth';
-        }
-    };
     return (
         <div className={cx('wrapper')}>
-            <button className={cx('start-btn')} onClick={handleGenerate}>
-                Generate
-            </button>
+            <div className={cx('container')}>
+                <button
+                    className={cx('btn')}
+                    onClick={() => {
+                        window.location.href = routes.generate;
+                    }}
+                >
+                    Generate SQL Statement
+                </button>
+                <button
+                    className={cx('btn')}
+                    onClick={() => {
+                        window.location.href = routes.exceltosql;
+                    }}
+                >
+                    Convert Excel to SQL Statement
+                </button>
+                <button className={cx('btn')}>Convert JSON to SQL Statement</button>
+            </div>
+            <div className={cx('label-sql')}>SQL</div>
+            <div className={cx('label-json')}>JSON</div>
+            <div className={cx('label-excel')}>EXCEL</div>
         </div>
     );
 }

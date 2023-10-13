@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Fragment, useRef } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ViewSQLStatement.module.scss';
@@ -33,7 +34,7 @@ function ViewSQLStatement({ sqlStatement }) {
                 <p ref={textRef} className={cx('code')}>
                     {textWithLineBreaks}
                 </p>
-                <Tippy trigger="click" placement='bottom' content="copy success">
+                <Tippy trigger="click" placement="bottom" content="copy success">
                     <button className={cx('btn-copy')} onClick={handleCopy}>
                         Copy
                     </button>
@@ -42,5 +43,9 @@ function ViewSQLStatement({ sqlStatement }) {
         </div>
     );
 }
+
+ViewSQLStatement.propTypes = {
+    sqlStatement: PropTypes.string,
+};
 
 export default ViewSQLStatement;

@@ -1,0 +1,130 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.container-left {
+    position: relative;
+    width: 50%;
+    padding: 12px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.inp-file {
+    margin-top: 12px;
+
+    span {
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-style: italic;
+        margin-right: 4px;
+    }
+}
+
+.show-table-modal {
+    max-width: 900px !important;
+}
+
+.show-table {
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+    margin-top: 24px;
+}
+
+.show-table-btn {
+    margin-top: 12px;
+    padding: 8px 4px;
+    min-width: 120px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background-color: aqua;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &.disable {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.btn-generate {
+    position: absolute;
+    top: 24px;
+    right: 12px;
+    padding: 8px 0;
+    min-width: 120px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: aqua;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &.disable {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.table-properties {
+    margin-top: 12px;
+    width: 100%;
+    height: 540px;
+    padding: 12px 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-style: italic;
+        margin-top: 12px;
+    }
+}
+
+.container-property {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.property {
+    width: 100%;
+    display: flex;
+    margin-bottom: 12px;
+
+    span {
+        display: block;
+        width: 50%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        margin-right: 36px;
+    }
+
+    select {
+        
+    }
+}
+
+
+.container-right {
+    width: 50%;
+}

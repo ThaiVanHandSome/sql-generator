@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './CreateDatabase.module.scss';
-import styles_inp from '../InputHaveCheck/InputHaveCheck.module.scss';
+import styles_inp from '~/components/InputHaveCheck/InputHaveCheck.module.scss';
 import Table from '../Table';
-import { TextInput } from '../InputHaveCheck';
-import dataType from '~/Data/dataType';
-import funcGenerate from '~/Data/funcGenerate';
+import { TextInput } from '~/components/InputHaveCheck';
+import { generateFunc, DataType } from '~/components/DataOption';
 
 const cx = classNames.bind(styles);
 const cx_inp = classNames.bind(styles_inp);
@@ -18,6 +18,7 @@ const initDatabase = {
             props: {
                 name: [''],
                 type: ['firstName'],
+                primaryKey: 0,
             },
             cnt: 10,
         },
@@ -26,6 +27,7 @@ const initDatabase = {
 
 function CreateDatabase({ setSqlStatement }) {
     const [database, setDatabase] = useState(initDatabase);
+    const [openMenu, setOpenMenu] = useState(false);
 
     const handleGenerate = () => {
         let check = true;
@@ -55,7 +57,12 @@ function CreateDatabase({ setSqlStatement }) {
             const propTypes = tablesData[i].props.type;
             let declareTable = '';
             for (let j = 0; j < propNames.length; j++) {
-                declareTable += `${propNames[j]} ${dataType[propTypes[j]]}`;
+                declareTable += `${propNames[j]} ${
+                    DataType[propTypes[j]] === 'create' ? 'int' : DataType[propTypes[j]]
+                }`;
+                if (j === tablesData[i].props.primaryKey) {
+                    declareTable += ' PRIMARY KEY';
+                }
                 if (j !== propNames.length - 1) {
                     declareTable += ',';
                 }
@@ -80,10 +87,16 @@ function CreateDatabase({ setSqlStatement }) {
             for (let j = 0; j < tables[i].cnt; j++) {
                 const propTypes = tables[i].props.type;
                 let vals = '';
+                let val = j + 1;
                 for (let k = 0; k < propTypes.length; k++) {
-                    const val = funcGenerate[propTypes[k]]();
-                    if (dataType[propTypes[k]] === 'varchar(50)') {
+                    if (typeof generateFunc[propTypes[k]] === 'function') {
+                        val = generateFunc[propTypes[k]]();
+                    }
+                    const type = DataType[propTypes[k]];
+                    if (type.includes('varchar')) {
                         vals += `'${val}'`;
+                    } else if (type === 'create') {
+                        vals += val.toString();
                     } else {
                         vals += parseInt(val / 100000000);
                     }
@@ -166,5 +179,9 @@ function CreateDatabase({ setSqlStatement }) {
         </div>
     );
 }
+
+CreateDatabase.propTypes = {
+    setSqlStatement: PropTypes.func.isRequired,
+};
 
 export default CreateDatabase;

@@ -1,8 +1,25 @@
 import { faker } from '@faker-js/faker';
+import {
+    generateVietnameseFullname,
+    generateVietnameseMiddlename,
+    generateVietnameseName,
+    generateVietnameseSurname,
+} from '../funcGenerate';
 export const MenuOption = [
     {
         name: 'Basic',
-        options: ['Id', 'Boolean', 'Color', 'Int', 'Float', 'RowNumberAutoIncrement'],
+        options: [
+            'Id',
+            'Boolean',
+            'Color',
+            'Int',
+            'Float',
+            'RowNumberAutoIncrement',
+            'Vietnamese Surname',
+            'Vietnamese MiddleName',
+            'Vietnamese Name',
+            'Vietnamese FullName',
+        ],
     },
     {
         name: 'Personal',
@@ -39,6 +56,10 @@ export const generateFunc = {
     Department: faker.commerce.department,
     Price: faker.commerce.price,
     Product: faker.commerce.product,
+    'Vietnamese SurName': generateVietnameseSurname,
+    'Vietnamese MiddleName': generateVietnameseMiddlename,
+    'Vietnamese Name': generateVietnameseName,
+    'Vietnamese FullName': generateVietnameseFullname,
 };
 
 export const DataType = {
@@ -47,7 +68,7 @@ export const DataType = {
     Color: 'varchar(50)',
     Int: 'int',
     Float: 'float',
-    RowNumberAutoIncrement: 'int',
+    RowNumberAutoIncrement: 'create',
     Avatar: 'varchar(50)',
     FirstName: 'varchar(50)',
     LastName: 'varchar(50)',
@@ -58,4 +79,8 @@ export const DataType = {
     Department: 'varchar(50)',
     Price: 'float',
     Product: 'varchar(50)',
+    'Vietnamese SurName': 'nvarchar(100)',
+    'Vietnamese MiddleName': 'nvarchar(100)',
+    'Vietnamese Name': 'nvarchar(100)',
+    'Vietnamese FullName': 'nvarchar(100)',
 };
