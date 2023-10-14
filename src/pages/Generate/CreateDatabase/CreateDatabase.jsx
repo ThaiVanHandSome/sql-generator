@@ -93,6 +93,7 @@ function CreateDatabase({ setSqlStatement }) {
                         val = generateFunc[propTypes[k]]();
                     }
                     const type = DataType[propTypes[k]];
+                    console.log(DataType[propTypes[k]]);
                     if (type.includes('varchar')) {
                         vals += `'${val}'`;
                     } else if (type === 'create') {
